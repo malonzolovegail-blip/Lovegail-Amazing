@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "Store": {
+      "title": "Store",
+      "description": "Hyperlocal 3km merchant store",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "tagline": { "type": "string" },
+        "category": { "type": "string" },
+        "isOpen": { "type": "boolean" },
+        "distanceKm": { "type": "number" },
+        "address": { "type": "string" },
+        "contactNumber": { "type": "string" },
+        "adminPassword": { "type": "string" },
+        "rating": { "type": "number" }
+      },
+      "required": ["id", "name"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer delivery or walk-in order",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "storeId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "deliveryAddress": { "type": "string" },
+        "status": { "type": "string" },
+        "grandTotal": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "storeId", "status"]
+    },
+    "Timecard": {
+      "title": "Timecard",
+      "description": "Staff attendance punch card with GPS and selfie verification",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "staffId": { "type": "string" },
+        "staffName": { "type": "string" },
+        "storeId": { "type": "string" },
+        "date": { "type": "string" },
+        "clockIn": { "type": "string" },
+        "clockOut": { "type": "string" },
+        "clockInLat": { "type": "number" },
+        "clockInLng": { "type": "number" },
+        "clockInPhoto": { "type": "string" },
+        "isCompleted": { "type": "boolean" }
+      },
+      "required": ["id", "staffId", "storeId", "date"]
+    },
+    "InventoryItem": {
+      "title": "InventoryItem",
+      "description": "Ingredient stock tracking",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "storeId": { "type": "string" },
+        "name": { "type": "string" },
+        "currentStock": { "type": "number" },
+        "unit": { "type": "string" }
+      },
+      "required": ["id", "storeId", "name"]
+    }
+  },
+  "firestore": {
+    "/stores/{storeId}": {
+      "schema": "Store",
+      "description": "Stores and merchant configurations"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Live orders"
+    },
+    "/timecards/{timecardId}": {
+      "schema": "Timecard",
+      "description": "Staff attendance records"
+    },
+    "/inventory/{inventoryId}": {
+      "schema": "InventoryItem",
+      "description": "Store inventory items"
+    }
+  }
+}

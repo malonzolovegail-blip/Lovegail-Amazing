@@ -1,0 +1,8 @@
+{
+  "name": "LocalServe - Multi-Store Delivery Platform",
+  "description": "Hyperlocal multi-merchant marketplace with 3km radius filtering, biker rider clock in and rotation dispatch, kitchen display system, walk-in and online POS, inventory tracking, staff payroll, and Google Drive backups.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
